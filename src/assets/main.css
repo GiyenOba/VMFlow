@@ -120,6 +120,9 @@ section > p:last-child {
     min-width: 0;
     width: 100%;
   }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 900px) {
   .vm-grid {
@@ -299,4 +302,31 @@ section > p:last-child {
 .empty-state {
   margin-top: 2rem;
   color: #6b7280;
+}
+.stats-grid {
+  margin-top: 2.5rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.stat-card {
+  padding: 1.5rem;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.stat-card p {
+  margin: 0 0 0.75rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.stat-card strong {
+  font-size: 2rem;
+  color: #111827;
 }

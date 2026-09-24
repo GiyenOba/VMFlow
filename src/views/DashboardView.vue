@@ -33,6 +33,13 @@ const virtualMachines = [
     status: 'maintenance',
   },
 ]
+const totalVMs = computed(() => virtualMachines.length)
+const availableVMs = computed(() => {
+  return virtualMachines.filter((vm) => vm.status === 'available').length
+})
+const maintenanceVMs = computed(() => {
+  return virtualMachines.filter((vm) => vm.status === 'maintenance').length
+})
 const searchQuery = ref('')
 const statusFilter = ref('all')
 const filteredVirtualMachine = computed(() => {
@@ -61,7 +68,20 @@ const filteredVirtualMachine = computed(() => {
         Manage virtual machines, reservations, and resource availability from one dashboard.
       </p>
     </div>
-
+    <div class="stats-grid">
+      <article class="stat-card">
+        <p>Total VMs:</p>
+        <strong>{{ totalVMs }}</strong>
+      </article>
+      <article class="stat-card">
+        <p>Available VMs:</p>
+        <strong>{{ availableVMs }}</strong>
+      </article>
+      <article class="stat-card">
+        <p>Maintenance VMs</p>
+        <strong>{{ maintenanceVMs }}</strong>
+      </article>
+    </div>
     <div class="vm-section">
       <div class="section-header">
         <div>
