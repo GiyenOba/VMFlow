@@ -1,4 +1,5 @@
 <script setup>
+import { ref, computed } from 'vue'
 import VMCard from '../components/VMCard.vue'
 
 const appName = 'VMFlow'
@@ -32,6 +33,17 @@ const virtualMachines = [
     status: 'maintenance',
   },
 ]
+const searchQuery = ref('')
+const filteredVirtualMachine = computed(() => {
+  const query = searchQuery.value.trim().toLowerCase()
+
+  if (!query) {
+    return virtualMachines
+  }
+  return virtualMachines.filter((vm) => {
+    return vm.name.toLowerCase().includes(query) || vm.os.toLowerCase().includes(query)
+  })
+})
 </script>
 
 <template>
@@ -52,10 +64,21 @@ const virtualMachines = [
           <h2>Virtual Machines</h2>
           <p>View the resources currently available to your team.</p>
         </div>
+        <div class="search-field">
+          <label for="vm-search">Search VMs</label>
+
+          <input
+            id="vm-search"
+            v-model="searchQuery"
+            type="search"
+            placeholder="Search by name or OS"
+          />
+        </div>
       </div>
 
       <div class="vm-grid">
-        <VMCard v-for="vm in virtualMachines" :key="vm.id" :vm="vm" />
+        <VMCard v-for="vm in filteredVirtualMachine" :key="vm.id" :vm="vm" />
+        <p v-if="filteredVirtualMachine.length === 0">No Virtual Machine matches your search.</p>
       </div>
     </div>
   </section>
