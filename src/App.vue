@@ -1,11 +1,17 @@
-<script setup></script>
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="app">
+    <header>
+      <RouterLink to="/">VMFlow</RouterLink>
+      <nav aria-label="Main Navigation">
+        <RouterLink to="/">Dashboard</RouterLink>
+      </nav>
+    </header>
+    <main>
+      <RouterView />
+    </main>
+  </div>
 </template>
-
-<style scoped></style>
