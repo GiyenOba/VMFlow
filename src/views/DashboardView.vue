@@ -1,5 +1,5 @@
 <script setup>
-const appName = 'Vmflow'
+const appName = 'VMflow'
 </script>
 
 <template>
