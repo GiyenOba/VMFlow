@@ -34,6 +34,7 @@ const virtualMachines = [
   },
 ]
 const searchQuery = ref('')
+const statusFilter = ref('all')
 const filteredVirtualMachine = computed(() => {
   const query = searchQuery.value.trim().toLowerCase()
 
@@ -41,7 +42,10 @@ const filteredVirtualMachine = computed(() => {
     return virtualMachines
   }
   return virtualMachines.filter((vm) => {
-    return vm.name.toLowerCase().includes(query) || vm.os.toLowerCase().includes(query)
+    const matchesSearch =
+      vm.name.toLowerCase().includes(query) || vm.os.toLowerCase().includes(query)
+    const matchesStatus = vm.status === statusFilter.value || statusFilter.value === 'all'
+    return matchesSearch && matchesStatus
   })
 })
 </script>
@@ -73,6 +77,14 @@ const filteredVirtualMachine = computed(() => {
             type="search"
             placeholder="Search by name or OS"
           />
+        </div>
+        <div class="form-control">
+          <label for="statusfilter">Status</label>
+          <select name="" id="status-filter" v-model="statusFilter">
+            <option value="all">All Status</option>
+            <option value="available">Available</option>
+            <option value="maintenance">Maintenance</option>
+          </select>
         </div>
       </div>
 

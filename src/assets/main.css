@@ -106,6 +106,20 @@ section > p:last-child {
   .search-field {
     width: 100%;
   }
+  .section-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .inventory-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .form-control input {
+    min-width: 0;
+    width: 100%;
+  }
 }
 @media (max-width: 900px) {
   .vm-grid {
@@ -234,6 +248,50 @@ section > p:last-child {
 }
 
 .search-field input:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.empty-state {
+  margin-top: 2rem;
+  color: #6b7280;
+}
+.inventory-controls {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-control label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-control input,
+.form-control select {
+  min-height: 42px;
+  padding: 0.65rem 0.85rem;
+
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  color: #1f2937;
+}
+
+.form-control input {
+  min-width: 240px;
+}
+
+.form-control input:focus,
+.form-control select:focus {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
