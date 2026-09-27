@@ -1,54 +1,31 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { storeToRefs } from 'pinia'
+
 import VMCard from '../components/VMCard.vue'
+import { useVMStore } from '../stores/vmStores.js'
 
 const appName = 'VMFlow'
 
-const virtualMachines = [
-  {
-    id: 1,
-    name: 'Development VM 01',
-    os: 'Ubuntu 24.04',
-    cpu: 4,
-    ram: 8,
-    storage: 120,
-    status: 'available',
-  },
-  {
-    id: 2,
-    name: 'Windows QA',
-    os: 'Windows 11',
-    cpu: 8,
-    ram: 16,
-    storage: 250,
-    status: 'available',
-  },
-  {
-    id: 3,
-    name: 'Legacy Testing',
-    os: 'Ubuntu 22.04',
-    cpu: 2,
-    ram: 4,
-    storage: 80,
-    status: 'maintenance',
-  },
-]
-const totalVMs = computed(() => virtualMachines.length)
-const availableVMs = computed(() => {
-  return virtualMachines.filter((vm) => vm.status === 'available').length
-})
-const maintenanceVMs = computed(() => {
-  return virtualMachines.filter((vm) => vm.status === 'maintenance').length
-})
+const vmStore = useVMStore()
+const { virtualMachines } = storeToRefs(vmStore)
+
 const searchQuery = ref('')
 const statusFilter = ref('all')
+
+const totalVMs = computed(() => virtualMachines.value.length)
+const availableVMs = computed(() => {
+  return virtualMachines.value.filter((vm) => vm.status === 'available').length
+})
+const maintenanceVMs = computed(() => {
+  return virtualMachines.value.filter((vm) => vm.status === 'maintenance').length
+})
+
 const filteredVirtualMachine = computed(() => {
   const query = searchQuery.value.trim().toLowerCase()
 
-  if (!query) {
-    return virtualMachines
-  }
-  return virtualMachines.filter((vm) => {
+
+  return virtualMachines.value.filter((vm) => {
     const matchesSearch =
       vm.name.toLowerCase().includes(query) || vm.os.toLowerCase().includes(query)
     const matchesStatus = vm.status === statusFilter.value || statusFilter.value === 'all'
