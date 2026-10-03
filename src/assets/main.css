@@ -330,3 +330,66 @@ section > p:last-child {
   font-size: 2rem;
   color: #111827;
 }
+.booking-page {
+  max-width: 720px;
+}
+
+.page-heading {
+  margin-bottom: 2rem;
+}
+
+.booking-form {
+  padding: 2rem;
+
+  display: grid;
+  gap: 1.5rem;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.booking-form .form-control input,
+.booking-form .form-control select {
+  width: 100%;
+}
+
+.booking-form button {
+  min-height: 44px;
+  padding: 0.75rem 1.25rem;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.booking-form button:hover {
+  background: #1d4ed8;
+}
+
+.form-message {
+  margin: 0;
+  padding: 1rem;
+
+  border-radius: 8px;
+}
+
+.success-message {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.waitlist-message {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #991b1b;
+}

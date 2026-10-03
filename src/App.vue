@@ -6,8 +6,12 @@ import { RouterLink, RouterView } from 'vue-router'
   <div class="app">
     <header>
       <RouterLink to="/">VMFlow</RouterLink>
-      <nav aria-label="Main Navigation">
-        <RouterLink to="/">Dashboard</RouterLink>
+      <nav aria-label="Main navigation">
+        <nav aria-label="Main navigation">
+          <RouterLink to="/">Dashboard</RouterLink>
+          <RouterLink to="/bookings">Bookings</RouterLink>
+          <RouterLink to="/bookings/new">New Booking</RouterLink>
+        </nav>
       </nav>
     </header>
     <main>
