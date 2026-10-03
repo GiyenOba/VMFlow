@@ -24,7 +24,6 @@ const maintenanceVMs = computed(() => {
 const filteredVirtualMachine = computed(() => {
   const query = searchQuery.value.trim().toLowerCase()
 
-
   return virtualMachines.value.filter((vm) => {
     const matchesSearch =
       vm.name.toLowerCase().includes(query) || vm.os.toLowerCase().includes(query)
